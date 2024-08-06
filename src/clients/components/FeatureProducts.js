@@ -1,7 +1,9 @@
 import Fetchdata from "../components/Fetchdata";
 import SingleProduct from "./SingleProduct";
+
 const FeatureProducts = () => {
   const products = Fetchdata();
+  const featuredProducts = products.slice(0, 3);
 
   return (
     <section className="container mx-auto">
@@ -9,12 +11,10 @@ const FeatureProducts = () => {
         Sản phẩm mới
       </h2>
       <div className="grid grid-cols-3 gap-10 w-[80%] mx-auto pb-20">
-        {products &&
-          products
-            .filter((product) => product.id % 3 === 0)
-            .map((product) => {
-              return <SingleProduct key={product.id} product={product} />;
-            })}
+        {featuredProducts &&
+          featuredProducts.map((product) => {
+            return <SingleProduct key={product._id} product={product} />;
+          })}
       </div>
     </section>
   );

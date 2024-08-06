@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const SingleProduct = ({ product }) => {
-  const { img, title, price, category, id } = product;
+  const { img, title, price, category, _id } = product;
   //hàm giới hạn title
   const truncateTitle = (title, maxLength) => {
     if (title.length > maxLength) {
@@ -20,7 +20,7 @@ const SingleProduct = ({ product }) => {
         />
       </div>
       <Link
-         to={`/product/${id}`} 
+         to={`/product/${_id}`} 
         state={product}
         className="hover:text-rose-500 duration-300 flex justify-between items-center"
       >
@@ -36,7 +36,7 @@ const SingleProduct = ({ product }) => {
       </h3>
       <div className="flex justify-between items-center">
         <Link
-           to={`/product/${id}`} 
+           to={`/product/${_id}`} 
           state={product}
           className="hover:text-rose-50 text-gray-900 duration-300 flex justify-between items-center"
         >
