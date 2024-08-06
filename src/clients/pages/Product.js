@@ -5,36 +5,38 @@ import { Link } from "react-router-dom";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState(null);
-
   const [catPath, setCatPath] = useState("Tất cả sản phẩm");
 
   const para = useRef(null);
 
-  const categories = [
-    "Hoa Linh",
-    "Closeup",
-    "P/S",
-    "Colgate",
-  ];
-
   useEffect(() => {
-    const getData = async () => {
+    const fetchProductsAndCategories = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:4000/products");
-        if (!res.ok) throw new Error("Oops! An error has occured");
-        const json = await res.json();
+
+        // Lấy sản phẩm từ API
+        const productRes = await fetch("http://localhost:4000/api/product");
+        if (!productRes.ok) throw new Error("Failed to fetch products");
+        const productJson = await productRes.json();
+        setProducts(productJson);
+        setFilterProducts(productJson);
+
+        // Lấy danh mục từ API
+        const categoryRes = await fetch("http://localhost:4000/api/categories");
+        if (!categoryRes.ok) throw new Error("Failed to fetch categories");
+        const categoryJson = await categoryRes.json();
+        setCategories(categoryJson.map(cat => cat.name));
+
         setIsLoading(false);
-        setProducts(json);
-        setFilterProducts(json);
       } catch (err) {
         setIsLoading(false);
         setErr(err.message);
       }
     };
-    getData();
+    fetchProductsAndCategories();
   }, []);
 
   if (isLoading)
@@ -78,7 +80,7 @@ const Products = () => {
                   (product) => product.category === cat
                 );
                 setFilterProducts(filters);
-                setCatPath(categories[i]);
+                setCatPath(cat);
               }}
             >
               <span>{cat}</span>
@@ -93,7 +95,7 @@ const Products = () => {
           <div className="grid grid-cols-3 gap-10 ">
             {filterProducts &&
               filterProducts.map((product) => (
-                <SingleProduct key={product.id} product={product} />
+                <SingleProduct key={product._id} product={product} />
               ))}
           </div>
         </div>
