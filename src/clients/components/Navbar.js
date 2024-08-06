@@ -27,6 +27,16 @@ const Navbar = () => {
               <FaShoppingCart />
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/login" activeClassName="text-blue-500">
+              Đăng Nhập
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/signup" activeClassName="text-blue-500">
+              Đăng Ký
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>
