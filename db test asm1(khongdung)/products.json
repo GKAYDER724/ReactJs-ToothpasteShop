@@ -1,77 +1,76 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "title": "Kem đánh răng dược liệu Ngọc Châu bảo vệ lợi, chắc răng, làm bền thành mạch, chống tụt lợi, chảy máu chân răng (100g)",
-        "description": "Kem đánh răng Ngọc Châu chứa các dược liệu có tác dụng tăng cường nuôi dưỡng răng lợi, chống ê buốt, giúp răng chắc khỏe từ gốc, thanh nhiệt, ngừa sâu răng, giữ răng sáng bóng và khử mùi hôi miệng giữ hơi thở thơm mát để bạn thoải mái, tự tin khi giao tiếp.",
-        "img": "https://cdn.nhathuoclongchau.com.vn/unsafe/375x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00010507_kem_danh_rang_duoc_lieu_ngoc_chau_5046_5d0b_large_d6c54522fb.JPG",
-        "category": "Hoa Linh",
-        "price": "35.000"
-      },
-      {
-        "id": 2,
-        "title": "Kem Đánh Răng Dạng Gel Closeup White Attraction Diamond 100G",
-        "description": "Kem Đánh Răng Closeup Làm Sáng Răng Kim Cương 100Grr là sản phẩm làm sáng răng đến từ thương hiệu Close Up thuộc tập đoàn Unilever của Mỹ, với công nghệ Ánh Sáng Xanh độc đáo giúp răng giúp làm sáng và nụ cười như ánh kim cương chỉ sau một lần chải. Mang lại sự tự tin, lôi cuốn trong cuộc sống hiện đại và năng động.",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/7/b/7b2897d33b40ef41e33047d1c2532f4ec5330431ede5bd2519010a78fdcd7906.jpeg",
-        "category": "Closeup",
-        "price": "33.000"
-      },
-      {
-        "id": 3,
-        "title": "Kem Đánh Răng Bảo Vệ 123 Trà Xanh Thanh Nhiệt Mang Lại Cảm Giác Mát Dịu P/S 230Gr",
-        "description": "P/S giới thiệu Kem Đánh Răng Bảo Vệ 123 Trà Xanh Thanh Nhiệt Mang Lại Cảm Giác Mát Dịu P/S .",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/9/3/933948fec47e425eb10da1905760d1c26457b11c5fa62ea9198abdf640032576.jpeg",
-        "category": "P/S",
-        "price": "47.000"
-      },
-      {
-        "id": 4,
-        "title": "Kem Đánh Răng Dầu Quất Và Thảo Dược Closeup 180Gr",
-        "description": "Kem Đánh Răng Thơm Mát Dầu Quất Và Thảo Dược closeup 180Gr là sản phẩm kem đánh răng dạng gel hoàn toàn mới đến từ thương hiệu closeup, với thành phần khoáng đất sét tự nhiên 100% giúp loại bỏ mảng bám và vết ố vàng xỉn màu trên răng, làm sáng răng tự nhiên hơn đến 2.5 lần, trả lại cho bạn hàm răng giúp làm sáng rạng rỡ, cho nụ cười thêm phần tự tin!",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/7/1/7114d252eae3dfbf50eb4a85066fe233e0e698179b43d45fcc8a021789ee00c6.jpeg",
-        "category": "Closeup",
-        "price": "34.000"
-      },
-      {
-        "id": 5,
-        "title": "Kem Đánh Răng Colgate Maxfresh Bạc Hà 225Gr Tặng Kèm Bàn Chải Đánh Răng",
-        "description": "Kem Đánh Răng Bạc Hà The Mát Dài Lâu Colgate Maxfresh có chứa các tinh thể cực the mát cho hơi thở the mát dài lâu. Công thức dạng Gel cho hơi thở thơm mát. Ngừa sâu răng tối đa, cho răng chắc khỏe mỗi ngày. Hạn chế mảng bám, ngăn ngừa bệnh viêm lợi. Mỗi khi chải răng là trải nghiệm sảng khoái cực đã.",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/1/1/11eb4621ce2878ebe63583bf9f27f86ebd4e18faa7f863528c7ce19e009ba782.png",
-        "category": "Colgate",
-        "price": "52.000"
-      },
-      {
-        "id": 6,
-        "title": "Kem Đánh Răng Colgate Trẻ Em Khủng Long Hương Dâu 40gr",
-        "description": "Kem đánh răng ngừa sâu răng cho trẻ em đến từ thương hiệu Colgate bảo vệ bé yêu với kem đánh răng ngừa sâu răng vượt trội.",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/3/0/3029757.png",
-        "category": "Colgate",
-        "price": "9.000"
-      },
-      {
-        "id": 7,
-        "title": "Kem Đánh Răng Cho Bé Hương Dâu P/S 35Gr",
-        "description": "Kem Đánh Răng Cho Bé Bé Ngoan Hương Dâu P/S 35Gr",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/7/a/7a0c5d2330fb03431d5b8e3eaa710f35b967718cd5edf06ff24ecd0a411dd657.jpeg",
-        "category": "P/S",
-        "price": "6.000"
-      },
-      {
-        "id": 8,
-        "title": "Kem Đánh Răng Khoáng Đất Sét Và Matcha Bạc Hà Closeup 230Gr",
-        "description": "Kem Đánh Răng Tác Động Toàn Diện Khoáng Đất Sét Và Matcha Bạc Hà Closeup Detox là sản phẩm kem đánh răng dạng gel hoàn toàn mới đến từ thương hiệu Closeup",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/m/_/m_u_c_3_.png",
-        "category": "Closeup",
-        "price": "51.000"
-      },
-      {
-        "id": 9,
-        "title": "Kem Đánh Răng P/S Ngừa Sâu Răng Vượt Trội Tuýp 230G",
-        "description": "Kem Đánh Răng P/S Ngừa Sâu Răng Vượt Trội Tuýp 240g được kiểm chứng khoa học giúp ngừa sâu răng vượt trội với thành phần pro-fluor linh hoạt và phân tử calci siêu nhỏ giúp ngừa sâu răng, làm sạch mảng bám và ngăn ngừa hôi miệng, giúp răng nướu chắc khỏe, nụ cười rạng rỡ và hơi thở thơm mát mỗi ngày",
-        "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/4/7/478674880a56cf0e6de52f60377bb90633f8736dc9b28e3a65700ee7fa23d152.png",  
-        "category": "P/S",
-        "price": "33.000"
-      }
-    ]
-  }
-  
+  "products": [
+    {
+      "id": 1,
+      "title": "Kem đánh răng dược liệu Ngọc Châu bảo vệ lợi, chắc răng, làm bền thành mạch, chống tụt lợi, chảy máu chân răng (100g)",
+      "description": "Kem đánh răng Ngọc Châu chứa các dược liệu có tác dụng tăng cường nuôi dưỡng răng lợi, chống ê buốt, giúp răng chắc khỏe từ gốc, thanh nhiệt, ngừa sâu răng, giữ răng sáng bóng và khử mùi hôi miệng giữ hơi thở thơm mát để bạn thoải mái, tự tin khi giao tiếp.",
+      "img": "https://cdn.nhathuoclongchau.com.vn/unsafe/375x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00010507_kem_danh_rang_duoc_lieu_ngoc_chau_5046_5d0b_large_d6c54522fb.JPG",
+      "category": "Hoa Linh",
+      "price": "35.000"
+    },
+    {
+      "id": 2,
+      "title": "Kem Đánh Răng Dạng Gel Closeup White Attraction Diamond 100G",
+      "description": "Kem Đánh Răng Closeup Làm Sáng Răng Kim Cương 100Grr là sản phẩm làm sáng răng đến từ thương hiệu Close Up thuộc tập đoàn Unilever của Mỹ, với công nghệ Ánh Sáng Xanh độc đáo giúp răng giúp làm sáng và nụ cười như ánh kim cương chỉ sau một lần chải. Mang lại sự tự tin, lôi cuốn trong cuộc sống hiện đại và năng động.",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/7/b/7b2897d33b40ef41e33047d1c2532f4ec5330431ede5bd2519010a78fdcd7906.jpeg",
+      "category": "Closeup",
+      "price": "33.000"
+    },
+    {
+      "id": 3,
+      "title": "Kem Đánh Răng Bảo Vệ 123 Trà Xanh Thanh Nhiệt Mang Lại Cảm Giác Mát Dịu P/S 230Gr",
+      "description": "P/S giới thiệu Kem Đánh Răng Bảo Vệ 123 Trà Xanh Thanh Nhiệt Mang Lại Cảm Giác Mát Dịu P/S .",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/9/3/933948fec47e425eb10da1905760d1c26457b11c5fa62ea9198abdf640032576.jpeg",
+      "category": "P/S",
+      "price": "47.000"
+    },
+    {
+      "id": 4,
+      "title": "Kem Đánh Răng Dầu Quất Và Thảo Dược Closeup 180Gr",
+      "description": "Kem Đánh Răng Thơm Mát Dầu Quất Và Thảo Dược closeup 180Gr là sản phẩm kem đánh răng dạng gel hoàn toàn mới đến từ thương hiệu closeup, với thành phần khoáng đất sét tự nhiên 100% giúp loại bỏ mảng bám và vết ố vàng xỉn màu trên răng, làm sáng răng tự nhiên hơn đến 2.5 lần, trả lại cho bạn hàm răng giúp làm sáng rạng rỡ, cho nụ cười thêm phần tự tin!",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/7/1/7114d252eae3dfbf50eb4a85066fe233e0e698179b43d45fcc8a021789ee00c6.jpeg",
+      "category": "Closeup",
+      "price": "34.000"
+    },
+    {
+      "id": 5,
+      "title": "Kem Đánh Răng Colgate Maxfresh Bạc Hà 225Gr Tặng Kèm Bàn Chải Đánh Răng",
+      "description": "Kem Đánh Răng Bạc Hà The Mát Dài Lâu Colgate Maxfresh có chứa các tinh thể cực the mát cho hơi thở the mát dài lâu. Công thức dạng Gel cho hơi thở thơm mát. Ngừa sâu răng tối đa, cho răng chắc khỏe mỗi ngày. Hạn chế mảng bám, ngăn ngừa bệnh viêm lợi. Mỗi khi chải răng là trải nghiệm sảng khoái cực đã.",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/1/1/11eb4621ce2878ebe63583bf9f27f86ebd4e18faa7f863528c7ce19e009ba782.png",
+      "category": "Colgate",
+      "price": "52.000"
+    },
+    {
+      "id": 6,
+      "title": "Kem Đánh Răng Colgate Trẻ Em Khủng Long Hương Dâu 40gr",
+      "description": "Kem đánh răng ngừa sâu răng cho trẻ em đến từ thương hiệu Colgate bảo vệ bé yêu với kem đánh răng ngừa sâu răng vượt trội.",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/3/0/3029757.png",
+      "category": "Colgate",
+      "price": "9.000"
+    },
+    {
+      "id": 7,
+      "title": "Kem Đánh Răng Cho Bé Hương Dâu P/S 35Gr",
+      "description": "Kem Đánh Răng Cho Bé Bé Ngoan Hương Dâu P/S 35Gr",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/7/a/7a0c5d2330fb03431d5b8e3eaa710f35b967718cd5edf06ff24ecd0a411dd657.jpeg",
+      "category": "P/S",
+      "price": "6.000"
+    },
+    {
+      "id": 8,
+      "title": "Kem Đánh Răng Khoáng Đất Sét Và Matcha Bạc Hà Closeup 230Gr",
+      "description": "Kem Đánh Răng Tác Động Toàn Diện Khoáng Đất Sét Và Matcha Bạc Hà Closeup Detox là sản phẩm kem đánh răng dạng gel hoàn toàn mới đến từ thương hiệu Closeup",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/m/_/m_u_c_3_.png",
+      "category": "Closeup",
+      "price": "51.000"
+    },
+    {
+      "id": 9,
+      "title": "Kem Đánh Răng P/S Ngừa Sâu Răng Vượt Trội Tuýp 230G",
+      "description": "Kem Đánh Răng P/S Ngừa Sâu Răng Vượt Trội Tuýp 240g được kiểm chứng khoa học giúp ngừa sâu răng vượt trội với thành phần pro-fluor linh hoạt và phân tử calci siêu nhỏ giúp ngừa sâu răng, làm sạch mảng bám và ngăn ngừa hôi miệng, giúp răng nướu chắc khỏe, nụ cười rạng rỡ và hơi thở thơm mát mỗi ngày",
+      "img": "https://www.guardian.com.vn/media/catalog/product/cache/174b3b3a0496b37750e6ede7d70a85ba/4/7/478674880a56cf0e6de52f60377bb90633f8736dc9b28e3a65700ee7fa23d152.png",
+      "category": "P/S",
+      "price": "33.000"
+    }
+  ]
+}
