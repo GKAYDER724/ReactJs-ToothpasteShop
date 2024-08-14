@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import SingleProduct from "../components/SingleProduct";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../../api";
+import { FaRegArrowAltCircleRight ,FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -9,8 +11,8 @@ const Products = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState(null);
   const [catPath, setCatPath] = useState("Tất cả sản phẩm");
-
-  const para = useRef(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(9);
 
   useEffect(() => {
     const fetchProductsAndCategories = async () => {
@@ -18,14 +20,14 @@ const Products = () => {
         setIsLoading(true);
 
         // Lấy sản phẩm từ API
-        const productRes = await fetch("http://localhost:4000/api/product");
+        const productRes = await fetch(`${API_BASE_URL}/product`);
         if (!productRes.ok) throw new Error("Failed to fetch products");
         const productJson = await productRes.json();
         setProducts(productJson);
         setFilterProducts(productJson);
 
         // Lấy danh mục từ API
-        const categoryRes = await fetch("http://localhost:4000/api/categories");
+        const categoryRes = await fetch(`${API_BASE_URL}/categories`);
         if (!categoryRes.ok) throw new Error("Failed to fetch categories");
         const categoryJson = await categoryRes.json();
         setCategories(categoryJson.map(cat => cat.name));
@@ -38,6 +40,12 @@ const Products = () => {
     };
     fetchProductsAndCategories();
   }, []);
+
+  // Phân trang
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filterProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filterProducts.length / productsPerPage);
 
   if (isLoading)
     return (
@@ -65,6 +73,7 @@ const Products = () => {
             onClick={() => {
               setFilterProducts(products);
               setCatPath("Tất cả sản phẩm");
+              setCurrentPage(1); // Reset trang khi chọn "Tất cả sản phẩm"
             }}
           >
             <span className="font-semibold">Tất cả sản phẩm</span>
@@ -72,7 +81,6 @@ const Products = () => {
           </h3>
           {categories.map((cat, i) => (
             <p
-              ref={para}
               className="select-none cursor-pointer capitalize font-semibold"
               key={i}
               onClick={() => {
@@ -81,6 +89,7 @@ const Products = () => {
                 );
                 setFilterProducts(filters);
                 setCatPath(cat);
+                setCurrentPage(1); // Reset trang khi chọn danh mục mới
               }}
             >
               <span>{cat}</span>
@@ -93,10 +102,29 @@ const Products = () => {
             <span className="text-sky-400 px-1">{catPath}</span>
           </p>
           <div className="grid grid-cols-3 gap-10 ">
-            {filterProducts &&
-              filterProducts.map((product) => (
+            {currentProducts &&
+              currentProducts.map((product) => (
                 <SingleProduct key={product._id} product={product} />
               ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              className="px-4 py-2 bg-gray-200 rounded-l"
+              disabled={currentPage === 1}
+            >
+              <FaRegArrowAltCircleLeft />
+            </button>
+            <span className="px-4 py-2 bg-gray-200">
+              {currentPage} / {totalPages}
+            </span>
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              className="px-4 py-2 bg-gray-200 rounded-r"
+              disabled={currentPage === totalPages}
+            >
+              <FaRegArrowAltCircleRight />
+            </button>
           </div>
         </div>
       </div>
