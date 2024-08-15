@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../../api';
 
 const Register = () => {
 
-  const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+  const [formData, setFormData] = useState({ name: '',email: '',password: '',confirmPassword: ''});
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -54,7 +54,7 @@ const Register = () => {
     // Kiểm tra lại toàn bộ form trước khi gửi
     if (validateForm()) {
       try {
-        const response = await fetch(`${API_BASE_URL}/register`, { // Thay đổi endpoint nếu cần
+        const response = await fetch(`${API_BASE_URL}/users`,{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -66,19 +66,14 @@ const Register = () => {
           }),
         });
 
-        const data = await response.json();
-
         if (response.ok) {
+          const data = await response.json();
           console.log('Đăng ký thành công:', data);
           setErrors({});
           // Điều hướng hoặc xử lý tiếp theo sau khi đăng ký thành công
         } else {
-          // Xử lý lỗi từ server
-          if (response.status === 400 && data.message === 'Tài khoản đã tồn tại.') {
-            setErrors({ form: 'Tài khoản đã tồn tại. Vui lòng chọn email khác.' });
-          } else {
-            setErrors({ form: 'Đăng ký thất bại, vui lòng thử lại.' });
-          }
+          console.error('Đăng ký thất bại');
+          setErrors({ form: 'Đăng ký thất bại, vui lòng thử lại.' });
         }
       } catch (error) {
         console.error('Lỗi kết nối:', error);
@@ -110,7 +105,9 @@ const Register = () => {
               <label htmlFor="name">Tên</label>
               <input
                 type="text"
-                className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.name ? 'is-invalid' : ''
+                }`}
                 id="name"
                 name="name"
                 placeholder="Nhập tên"
@@ -126,7 +123,9 @@ const Register = () => {
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.email ? 'is-invalid' : ''
+                }`}
                 id="email"
                 name="email"
                 placeholder="Nhập email"
@@ -142,7 +141,9 @@ const Register = () => {
               <label htmlFor="password">Mật khẩu</label>
               <input
                 type="password"
-                className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.password ? 'is-invalid' : ''
+                }`}
                 id="password"
                 name="password"
                 placeholder="Nhập mật khẩu"
@@ -158,7 +159,9 @@ const Register = () => {
               <label htmlFor="confirmPassword">Xác nhận mật khẩu</label>
               <input
                 type="password"
-                className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.confirmPassword ? 'is-invalid' : ''
+                }`}
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Xác nhận mật khẩu"
