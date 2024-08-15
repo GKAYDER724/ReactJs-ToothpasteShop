@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../../api";
 import { FaRegArrowAltCircleRight ,FaRegArrowAltCircleLeft } from "react-icons/fa";
 
-const Products = () => {
+const   Products = () => {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   const [categories, setCategories] = useState([]);

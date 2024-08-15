@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext"; // Import hook giỏ hàng
+import { useContext } from "react"; // Import useContext
+import { AuthContext } from "../context/AuthContext";
 
 const SingleProduct = ({ product }) => {
   const { img, title, price, category, _id } = product;
   const { addToCart } = useCart(); // Lấy hàm addToCart từ Context
+  const { isAuthenticated } = useContext(AuthContext); // Lấy trạng thái đăng nhập từ AuthContext
+  const navigate = useNavigate();
   
   // Hàm giới hạn title
   const truncateTitle = (title, maxLength) => {
@@ -17,6 +21,15 @@ const SingleProduct = ({ product }) => {
   // Hàm định dạng giá thành VND
   const formatPrice = (price) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  };
+
+  // Hàm xử lý khi nhấn "Thêm vào giỏ"
+  const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      navigate("/login"); // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
+    } else {
+      addToCart(product); // Thêm sản phẩm vào giỏ hàng nếu đã đăng nhập
+    }
   };
 
   return (
@@ -54,7 +67,7 @@ const SingleProduct = ({ product }) => {
           </button>
         </Link>
         <button
-          onClick={() => addToCart(product)} // Thêm sản phẩm vào giỏ
+          onClick={handleAddToCart} // Thay đổi hành động click nút
           className="bg-sky-400 text-sky-50 hover:bg-sky-50 hover:text-sky-400 duration-300 border border-sky-400 px-2 py-1 rounded-md"
         >
           Thêm vào giỏ

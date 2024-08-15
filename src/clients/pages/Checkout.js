@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const Checkout = () => {
-  const { cart, getTotalQuantity } = useCart();
+  const { cart, getTotalQuantity, clearCart } = useCart();
+  const navigate = useNavigate();
 
   // Hàm định dạng giá thành VND
   const formatPrice = (price) => {
@@ -18,6 +20,15 @@ const Checkout = () => {
     event.preventDefault();
     // Xử lý logic thanh toán ở đây
   };
+
+  const handlePayment = () => {
+    // Sau khi thanh toán thành công, xóa giỏ hàng
+    clearCart();
+
+    // Chuyển hướng đến trang xác nhận thanh toán thành công
+    navigate('/payment-success');
+  };
+
 
   return (
     <div className="container my-5">
@@ -78,7 +89,7 @@ const Checkout = () => {
               <label htmlFor="email">Email</label>
               <input type="email" id="email" required className="form-control" />
             </div>
-            <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">Thanh toán</button>
+            <button onClick={handlePayment} type="submit" className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">Thanh toán</button>
           </form>
         </div>
       </div>

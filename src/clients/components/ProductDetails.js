@@ -1,9 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext"; // Import hook giỏ hàng
+import { useAuth } from "../context/AuthContext"; // Import hook xác thực
+
 
 const ProductDetails = () => {
   const { state: product } = useLocation();
   const { addToCart } = useCart(); // Lấy hàm addToCart từ Context
+  const { isAuthenticated } = useAuth(); // Lấy trạng thái đăng nhập
+  const navigate = useNavigate();
 
   const { img, title, description, category, price } = product;
 
@@ -11,6 +15,17 @@ const ProductDetails = () => {
   // Hàm định dạng giá thành VND
   const formatPrice = (price) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  };
+
+  // Hàm xử lý khi nhấn "Thêm vào giỏ hàng"
+  const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
+      navigate("/login");
+    } else {
+      // Thêm sản phẩm vào giỏ hàng nếu đã đăng nhập
+      addToCart(product);
+    }
   };
 
   return (
@@ -35,7 +50,7 @@ const ProductDetails = () => {
             <p className="text-gray-800">{description}</p>
           </div>
           <button
-            onClick={() => addToCart(product)} // Thêm sản phẩm vào giỏ
+            onClick={handleAddToCart} // Gọi hàm xử lý khi nhấn nút
             className="bg-sky-500 text-sky-50 px-2 py-1 mt-4"
           >
             Thêm vào giỏ hàng
