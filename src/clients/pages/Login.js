@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { API_BASE_URL } from '../../api';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; // Đảm bảo đường dẫn đúng
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -8,16 +8,17 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  
+  const { login } = useAuth();
+
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!email) {
       newErrors.email = 'Email không được để trống.';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = 'Email không hợp lệ.';
     }
-    
+
     if (!password) {
       newErrors.password = 'Mật khẩu không được để trống.';
     }
@@ -36,28 +37,9 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Đăng nhập thất bại.');
-      }
-
-      console.log('Đăng nhập thành công:', data);
-
-      // Lưu token vào localStorage và chuyển hướng tới trang chính
-      localStorage.setItem('authToken', data.token);
-      navigate('/dashboard'); // Điều hướng tới trang chính hoặc dashboard
-      
+      await login(email, password); // Gọi hàm login từ AuthContext
+      navigate('/dashboard'); // Điều hướng đến dashboard sau khi đăng nhập thành công
     } catch (error) {
-      console.error('Lỗi khi đăng nhập:', error.message);
       setErrors({ form: error.message });
     } finally {
       setLoading(false);

@@ -1,9 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext"; // Import hook giỏ hàng
 import { useAuth } from "../context/AuthContext"; // Import hook xác thực
 
-
 const ProductDetails = () => {
+  const location = useLocation(); // Use useLocation hook
   const { state: product } = useLocation();
   const { addToCart } = useCart(); // Lấy hàm addToCart từ Context
   const { isAuthenticated } = useAuth(); // Lấy trạng thái đăng nhập
@@ -11,7 +12,6 @@ const ProductDetails = () => {
 
   const { img, title, description, category, price } = product;
 
-  
   // Hàm định dạng giá thành VND
   const formatPrice = (price) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
@@ -21,12 +21,19 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     if (!isAuthenticated) {
       // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
-      navigate("/login");
+      navigate("/login", { state: { from: location, product } });
     } else {
       // Thêm sản phẩm vào giỏ hàng nếu đã đăng nhập
       addToCart(product);
     }
   };
+
+  // Thêm sản phẩm vào giỏ hàng nếu điều hướng trở lại từ trang đăng nhập
+  useEffect(() => {
+    if (isAuthenticated && product) {
+      addToCart(product);
+    }
+  }, [isAuthenticated, product, addToCart]);
 
   return (
     <section className="flex flex-col gap-16 py-10 bg-gray-100">
@@ -64,7 +71,6 @@ const ProductDetails = () => {
         &larr; Quay lại danh sách sản phẩm
       </Link>
     </section>
-
   );
 };
 
