@@ -1,48 +1,67 @@
-import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const { getTotalQuantity } = useCart();
+  const navigate = useNavigate();
+  const isAuthenticated = !!localStorage.getItem('authToken'); // Kiểm tra xem người dùng đã đăng nhập chưa
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // Xóa token khi đăng xuất
+    navigate('/login'); // Chuyển hướng tới trang đăng nhập
+  };
 
   return (
     <div className="shadow-lg backdrop-blur-lg py-5 text-gray-900 bg-gray-50">
       <nav className="flex items-center container mx-auto">
         <div>
-          <Link to="/" className="text-gray-450 italic text-7xl">
-          Toothpaste
-          </Link>
+          <button onClick={() => navigate('/')} className="text-gray-450 italic text-7xl">
+            Toothpaste
+          </button>
         </div>
         <ul className="list-none flex justify-center items-center ml-auto gap-5">
           <li>
-            <NavLink to="/">Trang chủ</NavLink>
+            <button onClick={() => navigate('/')} className="text-gray-900">Trang chủ</button>
           </li>
           <li>
-            <NavLink to="/about">Về chúng tôi</NavLink>
+            <button onClick={() => navigate('/about')} className="text-gray-900">Về chúng tôi</button>
           </li>
           <li>
-            <NavLink to="/product">Sản phẩm</NavLink>
+            <button onClick={() => navigate('/product')} className="text-gray-900">Sản phẩm</button>
           </li>
           <li>
-            <NavLink to="/contact">Cộng tác</NavLink>
+            <button onClick={() => navigate('/contact')} className="text-gray-900">Cộng tác</button>
           </li>
           <li className="relative">
-            <NavLink to="/cart" className="relative">
+            <button onClick={() => navigate('/cart')} className="text-gray-900 relative">
               <FaShoppingCart className="text-xl" />
-              {/* Hiển thị số lượng sản phẩm trong giỏ hàng */}
               {getTotalQuantity() > 0 && (
                 <span className="absolute top-[-10px] right-[-10px] bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {getTotalQuantity()}
                 </span>
               )}
-            </NavLink>
+            </button>
           </li>
-          <li>
-            <NavLink to="/login">Đăng nhập</NavLink>
-          </li>
-          <li>
-            <NavLink to="/register">Đăng Ký</NavLink>
-          </li>
+          {isAuthenticated ? (
+            <>
+              <li>
+                <button onClick={() => navigate('/profile')} className="text-gray-900">Thông tin tài khoản</button>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="text-gray-900">Đăng xuất</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <button onClick={() => navigate('/login')} className="text-gray-900">Đăng nhập</button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/register')} className="text-gray-900">Đăng ký</button>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>

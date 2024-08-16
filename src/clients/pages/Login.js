@@ -37,10 +37,11 @@ const Login = () => {
     setLoading(true);
 
     try {
-      await login(email, password); // Gọi hàm login từ AuthContext
-      navigate('/dashboard'); // Điều hướng đến dashboard sau khi đăng nhập thành công
+      const token = await login(email, password); // Gọi hàm login từ AuthContext và nhận token
+      localStorage.setItem('authToken', token); // Lưu token vào localStorage
+      navigate('/profile'); // Điều hướng đến trang profile sau khi đăng nhập thành công
     } catch (error) {
-      setErrors({ form: error.message });
+      setErrors({ form: error.message || 'Đăng nhập thất bại. Vui lòng thử lại.' });
     } finally {
       setLoading(false);
     }
@@ -77,7 +78,12 @@ const Login = () => {
                   />
                   {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                 </div>
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                <br />
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+                  disabled={loading}
+                >
                   {loading ? 'Đang xử lý...' : 'Đăng nhập'}
                 </button>
               </form>

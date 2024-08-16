@@ -1,15 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext"; // Import hook giỏ hàng
-import { useContext } from "react"; // Import useContext
-import { AuthContext } from "../context/AuthContext";
 
 const SingleProduct = ({ product }) => {
   const { img, title, price, category, _id } = product;
   const { addToCart } = useCart(); // Lấy hàm addToCart từ Context
-  const { isAuthenticated } = useContext(AuthContext); // Lấy trạng thái đăng nhập từ AuthContext
-  const navigate = useNavigate();
-  
-  // Hàm giới hạn title
+
+  // Hàm giới hạn tiêu đề
   const truncateTitle = (title, maxLength) => {
     if (title.length > maxLength) {
       return title.slice(0, maxLength) + "...";
@@ -25,11 +21,7 @@ const SingleProduct = ({ product }) => {
 
   // Hàm xử lý khi nhấn "Thêm vào giỏ"
   const handleAddToCart = () => {
-    if (!isAuthenticated) {
-      navigate("/login"); // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
-    } else {
-      addToCart(product); // Thêm sản phẩm vào giỏ hàng nếu đã đăng nhập
-    }
+    addToCart(product); // Thêm sản phẩm vào giỏ hàng mà không kiểm tra đăng nhập
   };
 
   return (

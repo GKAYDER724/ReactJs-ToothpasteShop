@@ -5,10 +5,10 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Tự động chuyển về trang chủ sau 3 giây
+    // Tự động chuyển về trang chủ sau 1 giây
     const timer = setTimeout(() => {
       navigate('/');
-    }, 3000);
+    }, 1000);
 
     // Xóa bộ đếm giờ khi thành phần bị hủy
     return () => clearTimeout(timer);

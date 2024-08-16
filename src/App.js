@@ -16,6 +16,7 @@ import { CartProvider } from './clients/context/CartContext';
 import { ToastContainer } from 'react-toastify';
 import Checkout from "./clients/pages/Checkout";
 import PaymentSuccess from './clients/pages/PaymentSuccess';
+import Profile from './clients/components/Profile';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
 

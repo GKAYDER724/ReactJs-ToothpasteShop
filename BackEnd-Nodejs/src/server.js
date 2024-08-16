@@ -4,6 +4,7 @@ const productRoutes = require('./routes/productRoutes');
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/categoryRoutes');
 const userRoutes = require('./routes/userRoutes')
+const paymentRoutes = require('./routes/paymentRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
@@ -34,6 +35,7 @@ app.use('/api', productRoutes);
 app.use('/api', authRoutes);
 app.use('/api', categoryRoutes)
 app.use('/api', userRoutes)
+app.use('/api', paymentRoutes)
 
 // Start the server
 const PORT = process.env.PORT || 4000;

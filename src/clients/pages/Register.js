@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { API_BASE_URL } from '../../api';
 
 const Register = () => {
-
-  const [formData, setFormData] = useState({ name: '',email: '',password: '',confirmPassword: ''});
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState(''); // Trạng thái cho thông báo thành công
 
   const handleChange = (e) => {
     setFormData({
@@ -54,7 +59,7 @@ const Register = () => {
     // Kiểm tra lại toàn bộ form trước khi gửi
     if (validateForm()) {
       try {
-        const response = await fetch(`${API_BASE_URL}/users`,{
+        const response = await fetch(`${API_BASE_URL}/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -70,7 +75,9 @@ const Register = () => {
           const data = await response.json();
           console.log('Đăng ký thành công:', data);
           setErrors({});
-          // Điều hướng hoặc xử lý tiếp theo sau khi đăng ký thành công
+          setSuccessMessage('Đăng ký thành công!'); // Thiết lập thông báo thành công
+          // Bạn cũng có thể reset lại form nếu cần
+          setFormData({ name: '', email: '', password: '', confirmPassword: '' });
         } else {
           console.error('Đăng ký thất bại');
           setErrors({ form: 'Đăng ký thất bại, vui lòng thử lại.' });
@@ -105,9 +112,7 @@ const Register = () => {
               <label htmlFor="name">Tên</label>
               <input
                 type="text"
-                className={`form-control ${
-                  errors.name ? 'is-invalid' : ''
-                }`}
+                className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                 id="name"
                 name="name"
                 placeholder="Nhập tên"
@@ -123,9 +128,7 @@ const Register = () => {
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                className={`form-control ${
-                  errors.email ? 'is-invalid' : ''
-                }`}
+                className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                 id="email"
                 name="email"
                 placeholder="Nhập email"
@@ -141,9 +144,7 @@ const Register = () => {
               <label htmlFor="password">Mật khẩu</label>
               <input
                 type="password"
-                className={`form-control ${
-                  errors.password ? 'is-invalid' : ''
-                }`}
+                className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                 id="password"
                 name="password"
                 placeholder="Nhập mật khẩu"
@@ -178,9 +179,17 @@ const Register = () => {
             {errors.form && (
               <div className="alert alert-danger">{errors.form}</div>
             )}
-            <button type="submit" className="btn btn-primary btn-block">
+            {successMessage && (
+              <div className="alert alert-success">{successMessage}</div>
+            )}
+            <br></br>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+            >
               Đăng ký
             </button>
+            <br></br>
           </form>
         </div>
       </div>

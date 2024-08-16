@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext"; // Import hook giỏ hàng
-import { useAuth } from "../context/AuthContext"; // Import hook xác thực
 
 const ProductDetails = () => {
   const location = useLocation();
   const { state: product } = location;
   const { addToCart, cart } = useCart(); // Lấy hàm addToCart từ Context và giỏ hàng
-  const { isAuthenticated } = useAuth(); // Lấy trạng thái đăng nhập
   const navigate = useNavigate();
   const [redirecting, setRedirecting] = useState(false);
 
@@ -25,14 +23,8 @@ const ProductDetails = () => {
 
   // Hàm xử lý khi nhấn "Thêm vào giỏ hàng"
   const handleAddToCart = () => {
-    if (!isAuthenticated) {
-      // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
-      navigate("/login", { state: { from: location, product } });
-    } else {
-      // Thêm sản phẩm vào giỏ hàng nếu đã đăng nhập
-      if (!isProductInCart(product)) {
-        addToCart(product);
-      }
+    if (!isProductInCart(product)) {
+      addToCart(product); // Thêm sản phẩm vào giỏ hàng mà không kiểm tra đăng nhập
     }
   };
 
