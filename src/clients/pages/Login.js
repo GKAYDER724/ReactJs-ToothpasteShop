@@ -9,33 +9,27 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
-
+  
   const validateForm = () => {
     const newErrors = {};
-
     if (!email) {
       newErrors.email = 'Email không được để trống.';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = 'Email không hợp lệ.';
     }
-
     if (!password) {
       newErrors.password = 'Mật khẩu không được để trống.';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) {
       return;
     }
-
     setLoading(true);
-
     try {
       const token = await login(email, password); // Gọi hàm login từ AuthContext và nhận token
       localStorage.setItem('authToken', token); // Lưu token vào localStorage
@@ -46,7 +40,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
